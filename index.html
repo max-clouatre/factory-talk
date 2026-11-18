@@ -287,9 +287,7 @@ ul.points.loud li strong { font-family: var(--f-display); font-weight: 800; font
 .statement.def { font-size: clamp(2.2rem, 5.6vw, 5.8rem); max-width: 18ch; line-height: 1.05; }
 
 /* slide 16: the proof */
-ul.points.proof { max-width: 46ch; }
-ul.points.proof li { font-size: clamp(1.2rem, 2.2vw, 2rem); line-height: 1.25; }
-ul.points.proof li::before { top: .42em; }
+.proof-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
 .repo { margin: 0; font-family: var(--f-mono); color: var(--muted); }
 
 /* slide 17: blockers folded into Monday */
@@ -573,19 +571,34 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
 
     <!-- 16 · 15:00 -->
     <section class="slide" data-name="This talk was built in a factory">
-      <div class="eyebrow"><b>The proof</b></div>
-      <h2>This talk was built in a factory.</h2>
-      <ul class="points proof">
-        <li>Written rules every change follows.</li>
-        <li>Different AI sessions, and every edit landed the same way: a commit, live in a minute.</li>
-        <li>The eval: a simulated audience panel. Its feedback became the changes.</li>
-      </ul>
-      <p class="repo">github.com/max-clouatre/factory-talk</p>
+      <div class="split proof-split">
+        <div>
+          <div class="eyebrow"><b>The proof</b></div>
+          <h2>This talk was built in a factory.</h2>
+          <ul class="points">
+            <li>Written rules every change follows.</li>
+            <li>Different AI sessions, and every edit landed the same way: a commit, live in a minute.</li>
+            <li>The eval: a simulated audience panel. Its feedback became the changes.</li>
+          </ul>
+          <p class="repo">github.com/max-clouatre/factory-talk</p>
+        </div>
+        <div>
+<pre class="tree" aria-label="This talk's repository layout">factory-talk/
+├── AGENTS.md         <span class="c"># purpose, rules, intake</span>
+├── CLAUDE.md         <span class="c"># points to AGENTS.md</span>
+├── .agents/skills/
+│   ├── brand-voice/
+│   ├── audience-simulation/
+│   └── self-assessment/  <span class="c"># the eval</span>
+└── index.html        <span class="c"># the product</span></pre>
+        </div>
+      </div>
       <aside class="notes">
         <li>15:00 to 15:45. Keep it quick; this is the war story.</li>
         <li>The rules were written down once: my title is the same everywhere, nothing about my day job, an 18-point font minimum. Every session followed them without being told twice.</li>
         <li>Several different AI sessions edited this deck. None of them deployed from a laptop: every change was a commit, and it was live about a minute later.</li>
         <li>The organizer's feedback went in the same way, and so did a simulated audience panel I used as the eval. It ran twice, and its notes became the changes you just watched.</li>
+        <li>Point at the tree: AGENTS.md holds the purpose, the rules and how a change gets in. The skills hold the voice, the audience panel, and the self-assessment that runs the panel and hands back fixes.</li>
         <li>The repo is public, so you can read the whole factory.</li>
         <li><b>"I wasn't the meat proxy for this talk. I built the factory."</b></li>
       </aside>
