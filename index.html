@@ -309,11 +309,12 @@ ol.takes.monday { max-width: 58ch; gap: .5em; }
 }
 
 /* slide 17: the objections, then hand them back */
-.objections { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: .2em .9em; max-width: 28ch;
+.objections { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: .2em .7em; max-width: 30ch;
   font-family: var(--f-display); font-variation-settings: "wdth" 100; font-weight: 700;
   font-size: clamp(1.6rem, 3.4vw, 3.4rem); line-height: 1.15; }
-.objections li + li::before { content: ""; display: inline-block; width: .22em; height: .22em; background: var(--accent);
-  margin-right: .9em; vertical-align: middle; }
+.objections li { display: inline-flex; align-items: center; gap: .7em; }
+.objections li::after { content: ""; width: .22em; height: .22em; background: var(--accent); flex: none; }
+.objections li:last-child::after { display: none; }
 .handback { display: flex; flex-direction: column; gap: .6em; }
 .coffee { margin: 0; font-family: var(--f-mono); color: var(--muted); }
 
