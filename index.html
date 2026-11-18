@@ -155,6 +155,11 @@ body.clean .todo { display: none; }
 }
 .panel .stn { font-weight: 600; letter-spacing: .08em; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .panel .name { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; flex: 1; }
+.panel .timer { font-size: 15px; font-weight: 600; letter-spacing: .06em; font-variant-numeric: tabular-nums; white-space: nowrap;
+  color: var(--muted); opacity: .75; background: none; border: 0; padding: 0 .4em; cursor: pointer; }
+.panel .timer.idle { opacity: .45; }
+.panel .timer.warn { color: var(--accent); opacity: 1; }
+.panel .timer.late { color: #D2452F; opacity: 1; }
 .progress { position: absolute; left: 0; top: -1px; height: 3px; background: var(--accent); transition: width .3s ease; }
 .panel button {
   font: inherit; color: var(--ink); background: transparent; border: 1px solid var(--rule); padding: 6px 10px; cursor: pointer; white-space: nowrap;
@@ -646,6 +651,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     <div class="progress" id="progress"></div>
     <span class="stn" id="stn">STN 01/19</span>
     <span class="name" id="name"></span>
+    <button class="timer idle" id="timer" title="Talk timer: T start/pause, R reset">20:00</button>
     <button id="notesBtn" aria-pressed="false" title="Toggle speaker notes (N)">Notes</button>
     <button id="prevBtn" aria-label="Previous">←</button>
     <button id="nextBtn" aria-label="Next">→</button>
@@ -781,6 +787,8 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
       bar = document.getElementById("progress"), notes = document.getElementById("notes"),
       notesList = document.getElementById("notesList"), notesBtn = document.getElementById("notesBtn");
   var idx = 0, step = 0, N = slides.length;
+  var T_TOTAL = 20 * 60000, tAcc = 0, tT0 = 0, tRun = false, tStarted = false, tTick = null, booted = false;
+  var timerEl = document.getElementById("timer");
   function pad(n) { return (n < 10 ? "0" : "") + n; }
   function maxSteps(sl) { return parseInt(sl.getAttribute("data-steps") || "0", 10); }
 
@@ -804,6 +812,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     stn.textContent = "STN " + pad(idx + 1) + "/" + pad(N);
     nameEl.textContent = cur.getAttribute("data-name");
     bar.style.width = ((idx + 1) / N * 100) + "%";
+    if (booted && idx > 0 && !tStarted) tToggle();
     var src = cur.querySelector("aside.notes");
     notesList.innerHTML = src ? src.innerHTML : "<li>No notes.</li>";
     try { history.replaceState(null, "", "#s" + (idx + 1)); } catch (e) {}
@@ -833,7 +842,28 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     else if (k === "Home") go(0);
     else if (k === "End") go(N - 1, "end");
     else if (k === "n" || k === "N") toggleNotes();
+    else if (k === "t" || k === "T") tToggle();
+    else if (k === "r" || k === "R") tReset();
   });
+
+  /* ---------- talk timer: counts down from 20:00, then negative ---------- */
+  function tLeft() { return T_TOTAL - (tAcc + (tRun ? Date.now() - tT0 : 0)); }
+  function tPaint() {
+    var ms = tLeft(), neg = ms < 0, sec = Math.ceil(Math.abs(ms) / 1000);
+    if (neg) sec = Math.floor(Math.abs(ms) / 1000);
+    timerEl.textContent = (neg && sec > 0 ? "-" : "") + Math.floor(sec / 60) + ":" + ("0" + sec % 60).slice(-2);
+    timerEl.classList.toggle("idle", !tRun);
+    timerEl.classList.toggle("warn", ms <= 5 * 60000 && ms > 2 * 60000);
+    timerEl.classList.toggle("late", ms <= 2 * 60000);
+  }
+  function tToggle() {
+    tStarted = true;
+    if (tRun) { tAcc += Date.now() - tT0; tRun = false; clearInterval(tTick); }
+    else { tT0 = Date.now(); tRun = true; tTick = setInterval(tPaint, 250); }
+    tPaint();
+  }
+  function tReset() { clearInterval(tTick); tRun = false; tStarted = false; tAcc = 0; tPaint(); }
+  timerEl.addEventListener("click", function () { tToggle(); timerEl.blur(); });
 
   var tx0 = null;
   var stage = document.getElementById("stage");
@@ -846,6 +876,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
 
   var m = /^#s(\d+)$/.exec(location.hash || "");
   go(m ? parseInt(m[1], 10) - 1 : 0);
+  booted = true;
 })();
 </script>
 
