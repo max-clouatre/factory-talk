@@ -290,7 +290,7 @@ ul.points.loud li strong { font-family: var(--f-display); font-weight: 800; font
 .proof-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
 .repo { margin: 0; font-family: var(--f-mono); color: var(--muted); }
 
-/* slide 17: blockers folded into Monday */
+/* slide 18: blockers folded into Monday */
 .lede.blockers { max-width: 52ch; color: var(--muted); }
 ol.takes.monday { max-width: 58ch; gap: .5em; }
 
@@ -308,7 +308,16 @@ ol.takes.monday { max-width: 58ch; gap: .5em; }
   -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
 
-/* slide 17: who has to be in the room */
+/* slide 17: the objections, then hand them back */
+.objections { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: .2em .9em; max-width: 28ch;
+  font-family: var(--f-display); font-variation-settings: "wdth" 100; font-weight: 700;
+  font-size: clamp(1.6rem, 3.4vw, 3.4rem); line-height: 1.15; }
+.objections li + li::before { content: ""; display: inline-block; width: .22em; height: .22em; background: var(--accent);
+  margin-right: .9em; vertical-align: middle; }
+.handback { display: flex; flex-direction: column; gap: .6em; }
+.coffee { margin: 0; font-family: var(--f-mono); color: var(--muted); }
+
+/* slide 18: who has to be in the room */
 .callout { margin: 0; max-width: 46ch; border-left: 6px solid var(--accent); padding-left: .8em;
   font-size: 1.15em; line-height: 1.35; }
 .callout b { font-family: var(--f-mono); letter-spacing: .1em; text-transform: uppercase; margin-right: .5em; }
@@ -605,6 +614,27 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
     <!-- 17 · 15:45 -->
+    <section class="slide" data-name="Not worth it because of..." data-steps="6">
+      <h2 class="long">That person on your team is going to say it's not worth it because of...</h2>
+      <ul class="objections">
+        <li data-step="1">Security.</li>
+        <li data-step="2">Token spend.</li>
+        <li data-step="3">Compliance.</li>
+        <li data-step="4">Deployment.</li>
+        <li data-step="5">"Our codebase is different."</li>
+      </ul>
+      <div class="handback" data-step="6">
+        <p class="ask">Your constraints. Your goals. Write them into the repo, and let the factory adapt.</p>
+        <p class="coffee">Try it first. Still think I'm wrong? Coffee's on me.</p>
+      </div>
+      <aside class="notes">
+        <li>15:45 to 16:15. Quick presses; don't stop on any one of them.</li>
+        <li>I'm not going into the weeds on security or token cost in 20 minutes. Those are real, and they're yours: set them as goals and constraints for your team, write them into the repo, and the models adapt to almost any situation.</li>
+        <li>Read the coffee line and mean it. It sets up the questions.</li>
+      </aside>
+    </section>
+
+    <!-- 18 · 16:15 -->
     <section class="slide" data-name="Monday">
       <h2>Monday, 9 AM: one meeting.</h2>
       <p class="lede blockers">Don't know which framework? Devs siloed? No agency over the SDLC? All solvable. Take it slow, and start here.</p>
@@ -615,7 +645,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
       </ol>
       <p class="callout"><b>Mandatory</b>Not just the devs. Delivery and product are in the room too. The better aligned every area is, the better.</p>
       <aside class="notes">
-        <li>15:45 to 16:45.</li>
+        <li>16:15 to 17:00.</li>
         <li>Open with the blockers: people don't try because they don't know which framework to use, devs are siloed or don't want to change how they work, or the team has no agency to rethink the SDLC. None of those is a technology problem, and every one is solvable.</li>
         <li>You don't need a platform team or a mandate. One or two small agreements, written down where the agent can read them.</li>
         <li>Say this part firmly: this is not a dev-only meeting. Delivery and product have to be there. If only the devs align, the factory builds the wrong thing faster.</li>
@@ -624,20 +654,20 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
       </aside>
     </section>
 
-    <!-- 18 · 16:45 -->
+    <!-- 19 · 17:00 -->
     <section class="slide" data-name="Build the factory first">
       <div class="hazard" aria-hidden="true"></div>
       <h1 style="font-size: clamp(2.2rem, 6vw, 5.4rem); max-width: 14ch;">Build the factory first. Then evolve the product.</h1>
       <div class="byline"><span><b>Max Clouatre</b> on LinkedIn</span></div>
       <aside class="notes">
-        <li>16:45 to 17:15.</li>
+        <li>17:00 to 17:15. One breath.</li>
         <li>The line, in one breath. Then flip to the hot takes.</li>
       </aside>
     </section>
 
     <!-- QUESTIONS -->
 
-    <!-- 19 · 17:15 to 20:00 -->
+    <!-- 20 · 17:15 to 20:00 -->
     <section class="slide" data-name="Hot takes">
       <div class="eyebrow"><b>Hot takes</b></div>
       <h2 class="long">Hot takes, mainly as conversation starters that might get me invited back.</h2>
@@ -667,7 +697,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
 
   <nav class="panel wrap" aria-label="Slide controls">
     <div class="progress" id="progress"></div>
-    <span class="stn" id="stn">STN 01/19</span>
+    <span class="stn" id="stn">STN 01/20</span>
     <span class="name" id="name"></span>
     <button class="timer idle" id="timer" title="Talk timer: T start/pause, R reset">20:00</button>
     <button id="notesBtn" aria-pressed="false" title="Toggle speaker notes (N)">Notes</button>
