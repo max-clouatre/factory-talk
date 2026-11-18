@@ -286,9 +286,15 @@ ul.points.loud li strong { font-family: var(--f-display); font-weight: 800; font
 /* slide 5: the one definition */
 .statement.def { font-size: clamp(2.2rem, 5.6vw, 5.8rem); max-width: 18ch; line-height: 1.05; }
 
-/* slide 16: what stops people, then the way through */
-.answer { display: flex; flex-direction: column; gap: 1em; }
-.answer .lede { max-width: 32ch; }
+/* slide 16: the proof */
+ul.points.proof { max-width: 46ch; }
+ul.points.proof li { font-size: clamp(1.2rem, 2.2vw, 2rem); line-height: 1.25; }
+ul.points.proof li::before { top: .42em; }
+.repo { margin: 0; font-family: var(--f-mono); color: var(--muted); }
+
+/* slide 17: blockers folded into Monday */
+.lede.blockers { max-width: 52ch; color: var(--muted); }
+ol.takes.monday { max-width: 58ch; gap: .5em; }
 
 /* slide 15: the self-improvement prompt */
 .prompt {
@@ -344,7 +350,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
       </ul>
       <aside class="notes">
         <li>0:30 to 1:30.</li>
-        <li>"Clo-heart." French Canadian from western Nebraska, for some reason.</li>
+        <li>"Clo-heart."</li>
         <li>I'm a Lead Engineer. I used to only care about keeping CSS away from JavaScript and reusable component libraries. Now, something much different.</li>
         <li>I've always been willing, and able, to adapt to the bleeding edge. I don't hold many technical opinions tightly, because that's how I stay adaptable. So feel free to disagree with everything tonight; there's a decent chance I'll agree with you by Friday.</li>
         <li>For some reason, the ability to shape reality with human language resonated with me deeply. I caught the right frequencies early, and applied generative AI just made sense.</li>
@@ -468,7 +474,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
       <aside class="notes">
         <li>Act 3, the fix. 7:30 to 8:45.</li>
         <li>We've solved this once already. Agentic coding quietly moved the authoring step back to everyone-brings-their-own.</li>
-        <li>Define the <b>harness</b> in one breath: everything between a person and the change. That's the agent and model, your prompts and rules files, skills, MCP servers (the tools an agent can call), and the checks that run before anything merges.</li>
+        <li>What goes in the factory, in one breath: everything between a person and the change. That's the agent and model, your prompts and rules files, skills, MCP servers (the tools an agent can call), and the checks that run before anything merges.</li>
         <li>We standardized the path to production, not your editor. Same here: share the factory, keep your hands.</li>
       </aside>
     </section>
@@ -477,9 +483,9 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     <section class="slide" data-name="Where does your team sit?" data-steps="3">
       <div class="eyebrow"><b>Where does your team sit?</b></div>
       <div class="triad">
-        <figure data-step="1"><div class="diagram" data-phase="current" role="img" aria-label="Three people, each with a differently shaped harness, adding misaligned layers to one product."></div><figcaption>Phase 1 · Current<span>Everyone brings their own</span><em>Each change carries the quirks of whoever made it. The product drifts.</em></figcaption></figure>
-        <figure data-step="2"><div class="diagram" data-phase="better" role="img" aria-label="Three matching harnesses built from shared parts. The product layers are closer but still slightly misaligned."></div><figcaption>Phase 2 · Better<span>Shared parts, own harness</span><em>Same skills and prompt libraries, assembled differently. Drift shrinks.</em></figcaption></figure>
-        <figure data-step="3"><div class="diagram" data-phase="best" role="img" aria-label="Three people working through one shared harness. Every product layer is aligned."></div><figcaption>Phase 3 · Best<span>One shared harness</span><em>It ships with the project, so every change lands the way the product expects.</em></figcaption></figure>
+        <figure data-step="1"><div class="diagram" data-phase="current" role="img" aria-label="Three people, each with a differently shaped setup, adding misaligned layers to one product."></div><figcaption>Phase 1 · Current<span>Everyone brings their own</span><em>Each change carries the quirks of whoever made it. The product drifts.</em></figcaption></figure>
+        <figure data-step="2"><div class="diagram" data-phase="better" role="img" aria-label="Three matching setups built from shared parts. The product layers are closer but still slightly misaligned."></div><figcaption>Phase 2 · Better<span>Shared parts, own setup</span><em>Same skills and prompt libraries, assembled differently. Drift shrinks.</em></figcaption></figure>
+        <figure data-step="3"><div class="diagram" data-phase="best" role="img" aria-label="Three people working through one shared factory. Every product layer is aligned."></div><figcaption>Phase 3 · Best<span>One shared factory</span><em>It ships with the project, so every change lands the way the product expects.</em></figcaption></figure>
       </div>
       <aside class="notes">
         <li>8:45 to 10:15. One phase per press.</li>
@@ -494,7 +500,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
         <div>
           <h2>The factory is files you can review.</h2>
           <ul class="points">
-            <li>The same command runs on your laptop and in CI, with the same result.</li>
+            <li>The same command runs on your laptop and in CI, with the same rules and checks.</li>
             <li>A rule or skill added once shows up in a teammate's next PR.</li>
             <li>Your experiment gets in by pull request, with an eval: an automated check that the agent's output is good.</li>
           </ul>
@@ -520,8 +526,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     <section class="slide" data-name="Edit the thing that edits the product">
       <h1 class="statement" style="max-width: 18ch;">Stop editing the product. Edit the thing that edits the product.</h1>
       <aside class="notes">
-        <li>12:00 to 13:15. Read it, then stop talking.</li>
-        <li>Ask "Who thinks that's crazy?" and take one objection.</li>
+        <li>12:00 to 12:45. Read it, then stop talking. Let it sit; save objections for questions.</li>
         <li>When you hand-fix something, fix the factory too; the 2 AM hotfix is fine, as long as the factory learns from it in the morning.</li>
         <li>A fix to your setup helps you. A fix to the factory helps every change, every teammate and every product it builds.</li>
         <li><b>That's how you stop being a Meat Proxy:</b> your thinking goes into the factory, where it compounds, instead of passing through once.</li>
@@ -530,7 +535,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
 
     <!-- ACT 4 · THE CALL -->
 
-    <!-- 14 · 13:15 -->
+    <!-- 14 · 12:45 -->
     <section class="slide" data-name="So much land to grab">
       <div class="eyebrow"><b>So much land to grab</b></div>
       <ul class="land">
@@ -541,7 +546,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
         <li>Improvement loops</li>
       </ul>
       <aside class="notes">
-        <li>Act 4, the call. 13:15 to 14:15.</li>
+        <li>Act 4, the call. 12:45 to 14:00. If the clock is past 13:30 leaving slide 13, skip the per-item notes and just read the five words.</li>
         <li>You're all doing it differently, but there is <i>so much</i> middle ground if you align on what's best for the product and what's best for the enterprise. And almost nobody has claimed it yet.</li>
         <li><b>Skills:</b> the shared ways your team gets things done.</li>
         <li><b>Flow:</b> how a story moves from the board to merged.</li>
@@ -551,14 +556,14 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
       </aside>
     </section>
 
-    <!-- 15 · 14:15 -->
+    <!-- 15 · 14:00 -->
     <section class="slide" data-name="A self-improving factory" data-steps="2">
       <div class="eyebrow"><b>Validation and self-improvement</b></div>
       <h2>Stop asking what the perfect tool is. Ask your product to examine itself.</h2>
       <blockquote class="prompt" data-step="1">"Pull up the last 100 MRs and pipelines. Identify common errors, failures, successes, bottlenecks, etc. and identify a list of core updates that would make the next 100 better."</blockquote>
       <p class="congrats" data-step="2"><span>Congrats, you just built a self&#8209;improving factory.</span></p>
       <aside class="notes">
-        <li>14:15 to 15:15. Prompt on the first press, punchline on the second.</li>
+        <li>14:00 to 15:00. Prompt on the first press, punchline on the second.</li>
         <li>Validation and self-improvement sound like the hard ones. They're really just a matter of perspective.</li>
         <li>Everyone's out shopping for the perfect eval tool. Skip that for now. Point the agent at your own history and ask it what would make the next batch better.</li>
         <li>Read the prompt out loud. It's one prompt, and anyone in this room could run it tomorrow.</li>
@@ -566,76 +571,76 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
       </aside>
     </section>
 
-    <!-- 16 · 15:15 -->
-    <section class="slide" data-name="What prevents people from trying" data-steps="4">
-      <h2>What prevents people from trying?</h2>
-      <div class="split">
-        <ul class="points loud">
-          <li data-step="1">They don't know which framework to use.</li>
-          <li data-step="2">Devs are too siloed, or don't want to change how they do things.</li>
-          <li data-step="3">Teams don't have the agency to rethink the SDLC as a whole.</li>
-        </ul>
-        <div class="answer" data-step="4">
-          <p class="ask">Each one of these is solvable.</p>
-          <p class="lede">Take it slow. Pick one or two simple things you agree on. Add them to the repo as a skill or a high-level rule.</p>
-        </div>
-      </div>
+    <!-- 16 · 15:00 -->
+    <section class="slide" data-name="This talk was built in a factory">
+      <div class="eyebrow"><b>The proof</b></div>
+      <h2>This talk was built in a factory.</h2>
+      <ul class="points proof">
+        <li>Written rules every change follows.</li>
+        <li>Different AI sessions, and every edit landed the same way: a commit, live in a minute.</li>
+        <li>The eval: a simulated audience panel. Its feedback became the changes.</li>
+      </ul>
+      <p class="repo">github.com/max-clouatre/factory-talk</p>
       <aside class="notes">
-        <li>15:15 to 16:15. One blocker per press, then the answer.</li>
-        <li>Ask the room which one sounds like their team. Usually it's all three.</li>
-        <li>None of these is a technology problem. They're habits and permission.</li>
-        <li>You don't need a platform team or a mandate. You need one or two small agreements, written down where the agent can read them.</li>
-        <li>Which is exactly what Monday is for.</li>
+        <li>15:00 to 15:45. Keep it quick; this is the war story.</li>
+        <li>The rules were written down once: my title is the same everywhere, nothing about my day job, an 18-point font minimum. Every session followed them without being told twice.</li>
+        <li>Several different AI sessions edited this deck. None of them deployed from a laptop: every change was a commit, and it was live about a minute later.</li>
+        <li>The organizer's feedback went in the same way, and so did a simulated audience panel I used as the eval. It ran twice, and its notes became the changes you just watched.</li>
+        <li>The repo is public, so you can read the whole factory.</li>
+        <li><b>"I wasn't the meat proxy for this talk. I built the factory."</b></li>
       </aside>
     </section>
 
-    <!-- 17 · 16:15 -->
+    <!-- 17 · 15:45 -->
     <section class="slide" data-name="Monday">
       <h2>Monday, 9 AM: one meeting.</h2>
-      <ol class="takes plain">
+      <p class="lede blockers">Don't know which framework? Devs siloed? No agency over the SDLC? All solvable. Take it slow, and start here.</p>
+      <ol class="takes plain monday">
         <li>Everyone shows how they actually finished their last story.</li>
         <li>Name where you overlap, and where you differ on purpose.</li>
-        <li>Agree on one thing that's best for the product, and check it into the repo.</li>
+        <li>Agree on one or two simple things, and check them into the repo as a skill or rule.</li>
       </ol>
       <p class="callout"><b>Mandatory</b>Not just the devs. Delivery and product are in the room too. The better aligned every area is, the better.</p>
       <aside class="notes">
-        <li>16:15 to 17:00.</li>
+        <li>15:45 to 16:45.</li>
+        <li>Open with the blockers: people don't try because they don't know which framework to use, devs are siloed or don't want to change how they work, or the team has no agency to rethink the SDLC. None of those is a technology problem, and every one is solvable.</li>
+        <li>You don't need a platform team or a mandate. One or two small agreements, written down where the agent can read them.</li>
         <li>Say this part firmly: this is not a dev-only meeting. Delivery and product have to be there. If only the devs align, the factory builds the wrong thing faster.</li>
         <li>If your team hasn't openly talked about how each of you uses AI, and the unique ways you're now finishing stories, put a meeting on the calendar first thing Monday.</li>
         <li>The goal isn't one tool. It's a shared understanding you build toward together.</li>
       </aside>
     </section>
 
-    <!-- 18 · 17:00 -->
+    <!-- 18 · 16:45 -->
     <section class="slide" data-name="Build the factory first">
       <div class="hazard" aria-hidden="true"></div>
       <h1 style="font-size: clamp(2.2rem, 6vw, 5.4rem); max-width: 14ch;">Build the factory first. Then evolve the product.</h1>
       <div class="byline"><span><b>Max Clouatre</b> on LinkedIn</span></div>
       <aside class="notes">
-        <li>17:00 to 17:30.</li>
+        <li>16:45 to 17:15.</li>
         <li>The line, in one breath. Then flip to the hot takes.</li>
       </aside>
     </section>
 
     <!-- QUESTIONS -->
 
-    <!-- 19 · 17:30 to 20:00 -->
+    <!-- 19 · 17:15 to 20:00 -->
     <section class="slide" data-name="Hot takes">
       <div class="eyebrow"><b>Hot takes</b></div>
       <h2 class="long">Hot takes, mainly as conversation starters that might get me invited back.</h2>
       <ol class="takes">
         <li>Human code review is a waste of time.</li>
         <li>Picking the model is the least important decision you'll make.</li>
-        <li>If the work stops when you close your laptop, you aren't trying hard enough.</li>
+        <li>If the work stops when you close your laptop, you haven't built a factory.</li>
         <li>The only engineering role left will be Product Engineer.</li>
       </ol>
       <aside class="notes">
-        <li>Questions, 17:30 to 20:00. Leave this up while you take them.</li>
+        <li>Questions, 17:15 to 20:00. Leave this up while you take them.</li>
         <li><b>Laptop take:</b> the factory should keep building in CI and in the background while you sleep; if it only runs while you're watching, you're still the bottleneck.</li>
         <li><b>Product Engineer take:</b> full stack, end to end tech, and product roadmapping in one role, because the factory writes the code and your job is deciding what it should build.</li>
         <li><b>"We're on different tools. Do we standardize?"</b> No. Standardize what's in the repo, which most tools can read.</li>
         <li><b>"For a small team, what's the first file?"</b> One shared instructions file, reviewed like code.</li>
-        <li><b>"Isn't one harness a bottleneck?"</b> Treat it like a product: it has an owner, takes pull requests, and evals are the safety net. Keep an escape hatch for experiments.</li>
+        <li><b>"Isn't one shared factory a bottleneck?"</b> Treat it like a product: it has an owner, takes pull requests, and evals are the safety net. Keep an escape hatch for experiments.</li>
         <li><b>"Doesn't uniformity kill creativity?"</b> The factory sets the floor, not the ceiling.</li>
         <li><b>"Who reviews, if not humans?"</b> Review the factory once, not every diff it produces.</li>
       </aside>
@@ -711,7 +716,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
       if (multi) { [70, 180, 290].forEach(function (cx) { g += '<line x1="180" y1="180" x2="' + cx + '" y2="142" ' + s("--rule", 1.5) + '/>'; }); }
       else g += '<line x1="180" y1="180" x2="180" y2="122" ' + s("--rule", 1.5) + '/>';
       g += '<rect x="40" y="180" width="280" height="44" ' + f("--accent") + '/>';
-      g += '<text x="180" y="207" text-anchor="middle" font-size="17" font-weight="600" ' + f("--on-accent") + '>' + (multi ? 'SHARED HARNESS v2' : 'SHARED HARNESS') + '</text>';
+      g += '<text x="180" y="207" text-anchor="middle" font-size="17" font-weight="600" ' + f("--on-accent") + '>' + (multi ? 'SHARED FACTORY v2' : 'SHARED FACTORY') + '</text>';
     }
     xs.forEach(function (x, i) {
       g += '<line x1="' + x + '" y1="250" x2="' + x + '" y2="' + (mode === "current" || mode === "better" ? 224 : 226) + '" ' + s("--ink", 1.5) + '/>';
