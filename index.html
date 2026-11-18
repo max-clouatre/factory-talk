@@ -253,14 +253,14 @@ ul.buzz s { text-decoration-color: var(--accent); text-decoration-thickness: .12
 }
 @media print { .punch { font-size: 2.2in; } }
 
-/* slide 8: as big as the slide allows */
+/* slide 9: as big as the slide allows */
 .meat {
   font-family: var(--f-display); font-variation-settings: "wdth" 125; font-weight: 900;
   font-size: min(19vw, 36vh); line-height: .86; letter-spacing: -.02em; margin: 0; text-align: center;
 }
 .meat span { display: block; }
 
-/* slides 6 and 7: the team, the board and the system */
+/* slides 7 and 8: the team, the board and the system */
 .board { width: 100%; max-width: 1000px; margin-inline: auto; }
 .board svg { width: 100%; height: auto; display: block; }
 .board svg text { font-family: var(--f-mono); }
@@ -270,13 +270,31 @@ ul.points.loud { gap: .55em; max-width: 34ch; }
 ul.points.loud li { font-size: 1.05em; line-height: 1.3; }
 ul.points.loud li strong { font-family: var(--f-display); font-weight: 800; font-variation-settings: "wdth" 110; }
 
-/* slide 13: five words of open ground */
+/* slide 14: five words of open ground */
 .land { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: .25em .8em; max-width: 20ch;
   font-family: var(--f-display); font-variation-settings: "wdth" 110; font-weight: 800;
   font-size: clamp(2.2rem, 5.4vw, 5.6rem); line-height: 1.05; }
 .land li { display: inline-flex; align-items: baseline; gap: .25em; }
 .land li::after { content: ""; width: .28em; height: .28em; background: var(--accent); flex: none; }
 .land li:last-child::after { display: none; }
+
+/* slide 5: the one definition */
+.statement.def { font-size: clamp(2.2rem, 5.6vw, 5.8rem); max-width: 18ch; line-height: 1.05; }
+
+/* slide 16: what stops people, then the way through */
+.answer { display: flex; flex-direction: column; gap: 1em; }
+.answer .lede { max-width: 32ch; }
+
+/* slide 15: the self-improvement prompt */
+.prompt {
+  margin: 0; max-width: 46ch; background: var(--panel); border: 1px solid var(--rule); border-left: 6px solid var(--accent);
+  padding: 1em 1.2em; font-family: var(--f-mono); font-size: 1em; line-height: 1.5; color: var(--ink);
+}
+.congrats {
+  font-family: var(--f-display); font-variation-settings: "wdth" 110; font-weight: 800; margin: 0;
+  font-size: clamp(1.6rem, 3.4vw, 3.2rem); line-height: 1.1; width: fit-content;
+  background: linear-gradient(transparent 70%, var(--accent) 70%); padding: 0 .08em;
+}
 
 ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation-settings: normal; }
 
@@ -351,14 +369,24 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
       </ul>
       <p class="punch">factory</p>
       <aside class="notes">
-        <li>Act 2, the mess. 3:00 to 3:45.</li>
+        <li>Act 2, the mess. 3:00 to 3:30.</li>
         <li>Let the room groan at the struck-out words for a beat before you start.</li>
         <li>I chose this word on purpose. It used to be a fun, interesting word. The industry has already obliterated it into a thousand meanings, just like every other word on this slide.</li>
-        <li>So tonight it means one thing: <b>the shared system your team builds, that builds your product.</b></li>
+        <li>So tonight it means one thing. Click.</li>
       </aside>
     </section>
 
-    <!-- 5 · 3:45 -->
+    <!-- 5 · 3:30 -->
+    <section class="slide center" data-name="Factory, defined">
+      <div class="eyebrow"><b>factory</b> · tonight's only definition</div>
+      <h1 class="statement def">The shared system your team builds, that builds your product.</h1>
+      <aside class="notes">
+        <li>3:30 to 3:45.</li>
+        <li>Read it once, slowly. That's it. Every time I say factory tonight, this is what I mean.</li>
+      </aside>
+    </section>
+
+    <!-- 6 · 3:45 -->
     <section class="slide center" data-name="The systems can build themselves now">
       <h1 class="statement">The systems can build themselves now.</h1>
       <aside class="notes">
@@ -370,7 +398,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
       </aside>
     </section>
 
-    <!-- 6 · 4:45 -->
+    <!-- 7 · 4:45 -->
     <section class="slide" data-name="How we've built software">
       <div class="eyebrow"><b>How we've built software</b></div>
       <div class="board" data-board="classic" role="img" aria-label="Four developers, each with their own laptop, pulling cards from one shared board and all feeding one deployed system."></div>
@@ -382,7 +410,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
       </aside>
     </section>
 
-    <!-- 7 · 5:30 -->
+    <!-- 8 · 5:30 -->
     <section class="slide" data-name="Software engineering theatre" data-steps="7">
       <div class="split">
         <div>
@@ -405,7 +433,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
       </aside>
     </section>
 
-    <!-- 8 · 7:00 -->
+    <!-- 9 · 7:00 -->
     <section class="slide center" data-name="MEAT PROXY">
       <h1 class="meat"><span>MEAT</span><span>PROXY</span></h1>
       <aside class="notes">
@@ -417,7 +445,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
 
     <!-- ACT 3 · THE FIX -->
 
-    <!-- 9 · 7:30 -->
+    <!-- 10 · 7:30 -->
     <section class="slide" data-name="Nobody deploys from their laptop anymore">
       <h2>Nobody deploys from their laptop anymore.</h2>
       <div class="compare">
@@ -432,7 +460,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
       </aside>
     </section>
 
-    <!-- 10 · 8:45 -->
+    <!-- 11 · 8:45 -->
     <section class="slide" data-name="Where does your team sit?" data-steps="3">
       <div class="eyebrow"><b>Where does your team sit?</b></div>
       <div class="triad">
@@ -447,7 +475,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
       </aside>
     </section>
 
-    <!-- 11 · 10:15 -->
+    <!-- 12 · 10:15 -->
     <section class="slide" data-name="The factory is files you can review">
       <div class="split">
         <div>
@@ -475,7 +503,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
       </aside>
     </section>
 
-    <!-- 12 · 12:00 -->
+    <!-- 13 · 12:00 -->
     <section class="slide" data-name="Edit the thing that edits the product">
       <h1 class="statement" style="max-width: 18ch;">Stop editing the product. Edit the thing that edits the product.</h1>
       <aside class="notes">
@@ -489,7 +517,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
 
     <!-- ACT 4 · THE CALL -->
 
-    <!-- 13 · 13:15 -->
+    <!-- 14 · 13:15 -->
     <section class="slide" data-name="So much land to grab">
       <div class="eyebrow"><b>So much land to grab</b></div>
       <ul class="land">
@@ -500,7 +528,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
         <li>Improvement loops</li>
       </ul>
       <aside class="notes">
-        <li>Act 4, the call. 13:15 to 14:30.</li>
+        <li>Act 4, the call. 13:15 to 14:15.</li>
         <li>You're all doing it differently, but there is <i>so much</i> middle ground if you align on what's best for the product and what's best for the enterprise. And almost nobody has claimed it yet.</li>
         <li><b>Skills:</b> the shared ways your team gets things done.</li>
         <li><b>Flow:</b> how a story moves from the board to merged.</li>
@@ -510,7 +538,45 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
       </aside>
     </section>
 
-    <!-- 14 · 14:30 -->
+    <!-- 15 · 14:15 -->
+    <section class="slide" data-name="A self-improving factory" data-steps="2">
+      <div class="eyebrow"><b>Validation and self-improvement</b></div>
+      <h2>Stop asking what the perfect tool is. Ask your product to examine itself.</h2>
+      <blockquote class="prompt" data-step="1">"Pull up the last 100 MRs and pipelines. Identify common errors, failures, successes, bottlenecks, etc. and identify a list of core updates that would make the next 100 better."</blockquote>
+      <p class="congrats" data-step="2">Congrats, you just built a self-improving factory.</p>
+      <aside class="notes">
+        <li>14:15 to 15:15. Prompt on the first press, punchline on the second.</li>
+        <li>Validation and self-improvement sound like the hard ones. They're really just a matter of perspective.</li>
+        <li>Everyone's out shopping for the perfect eval tool. Skip that for now. Point the agent at your own history and ask it what would make the next batch better.</li>
+        <li>Read the prompt out loud. It's one prompt, and anyone in this room could run it tomorrow.</li>
+        <li>Take the top few updates it suggests, check them into the repo, and run it again next month. That's the improvement loop.</li>
+      </aside>
+    </section>
+
+    <!-- 16 · 15:15 -->
+    <section class="slide" data-name="What prevents people from trying" data-steps="4">
+      <h2>What prevents people from trying?</h2>
+      <div class="split">
+        <ul class="points loud">
+          <li data-step="1">They don't know which framework to use.</li>
+          <li data-step="2">Devs are too siloed, or don't want to change how they do things.</li>
+          <li data-step="3">Teams don't have the agency to rethink the SDLC as a whole.</li>
+        </ul>
+        <div class="answer" data-step="4">
+          <p class="ask">Each one of these is solvable.</p>
+          <p class="lede">Take it slow. Pick one or two simple things you agree on. Add them to the repo as a skill or a high-level rule.</p>
+        </div>
+      </div>
+      <aside class="notes">
+        <li>15:15 to 16:15. One blocker per press, then the answer.</li>
+        <li>Ask the room which one sounds like their team. Usually it's all three.</li>
+        <li>None of these is a technology problem. They're habits and permission.</li>
+        <li>You don't need a platform team or a mandate. You need one or two small agreements, written down where the agent can read them.</li>
+        <li>Which is exactly what Monday is for.</li>
+      </aside>
+    </section>
+
+    <!-- 17 · 16:15 -->
     <section class="slide" data-name="Monday">
       <h2>Monday, 9 AM: one meeting.</h2>
       <ol class="takes plain">
@@ -519,26 +585,26 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
         <li>Agree on one thing that's best for the product, and check it into the repo.</li>
       </ol>
       <aside class="notes">
-        <li>14:30 to 15:30.</li>
+        <li>16:15 to 17:00.</li>
         <li>If your team hasn't openly talked about how each of you uses AI, and the unique ways you're now finishing stories, put a meeting on the calendar first thing Monday.</li>
         <li>The goal isn't one tool. It's a shared understanding you build toward together.</li>
       </aside>
     </section>
 
-    <!-- 15 · 15:30 -->
+    <!-- 18 · 17:00 -->
     <section class="slide" data-name="Build the factory first">
       <div class="hazard" aria-hidden="true"></div>
       <h1 style="font-size: clamp(2.2rem, 6vw, 5.4rem); max-width: 14ch;">Build the factory first. Then evolve the product.</h1>
       <div class="byline"><span><b>Max Clouatre</b> on LinkedIn</span></div>
       <aside class="notes">
-        <li>15:30 to 16:00.</li>
+        <li>17:00 to 17:30.</li>
         <li>The line, in one breath. Then flip to the hot takes.</li>
       </aside>
     </section>
 
     <!-- QUESTIONS -->
 
-    <!-- 16 · 16:00 to 20:00 -->
+    <!-- 19 · 17:30 to 20:00 -->
     <section class="slide" data-name="Hot takes">
       <div class="eyebrow"><b>Hot takes</b></div>
       <h2 class="long">Hot takes, mainly as conversation starters that might get me invited back.</h2>
@@ -548,7 +614,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
         <li>If your agent setup only runs on your laptop, it's a hobby.</li>
       </ol>
       <aside class="notes">
-        <li>Questions, 16:00 to 20:00. Leave this up while you take them.</li>
+        <li>Questions, 17:30 to 20:00. Leave this up while you take them.</li>
         <li><b>"We're on different tools. Do we standardize?"</b> No. Standardize what's in the repo, which most tools can read.</li>
         <li><b>"For a small team, what's the first file?"</b> One shared instructions file, reviewed like code.</li>
         <li><b>"Isn't one harness a bottleneck?"</b> Treat it like a product: it has an owner, takes pull requests, and evals are the safety net. Keep an escape hatch for experiments.</li>
@@ -565,7 +631,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
 
   <nav class="panel wrap" aria-label="Slide controls">
     <div class="progress" id="progress"></div>
-    <span class="stn" id="stn">STN 01/16</span>
+    <span class="stn" id="stn">STN 01/19</span>
     <span class="name" id="name"></span>
     <button id="notesBtn" aria-pressed="false" title="Toggle speaker notes (N)">Notes</button>
     <button id="prevBtn" aria-label="Previous">←</button>
