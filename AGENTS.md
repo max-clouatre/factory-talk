@@ -19,10 +19,10 @@ These hold for every change, from every session, without being restated.
 
 ## Intake flow
 
-1. **Request comes in** as plain words: "add a slide after 4", "sharpen hot take 3".
+1. **Request comes in** as plain words: "add a slide after 4", "sharpen hot take 3". Shape it with `.agents/intake.md`.
 2. **Apply it** to `index.html`. Match the existing slide markup and CSS, put speaker notes in `aside.notes`, and keep the slide-number comments and time windows in order.
-3. **Check it** against the standing rules: one buzzword, no employer details, 18pt, time budget still adds up, keyboard controls (arrows, N, T, R) still work.
-4. **Ship it.** One commit per request, with a message that says what changed and why, pushed to `main`. Pages is live about a minute later.
+3. **Check it.** Run `python3 checks/validate.py`: it checks banned wording, the speaker title, slide numbering, notes time windows, steps, chapter cards and the 18pt floor. Then check what it can't: one buzzword, no scrolling at presentation size, keyboard controls (arrows, N, T, R) still work.
+4. **Ship it.** One commit per request, with a message that says what changed and why, pushed to `main`. `.github/workflows/validate.yml` runs the same checks on every push, and Pages is live about a minute later.
 5. **Verify live.** Open the deployed slide at presentation size and look at it before reporting back.
 
 Bigger changes (new slides, reordering, cuts) also run `.agents/skills/self-assessment` before and after.
