@@ -134,6 +134,10 @@ ol.takes li::before { content: counter(take, decimal-leading-zero); font-family:
   overflow-x: auto; white-space: pre; color: var(--ink);
 }
 .tree .c { color: var(--muted); }
+/* slide 16: the tree row for the current line lights up */
+.map-tree [data-hl] { transition: background .25s ease, color .25s ease; }
+.map-tree .hl { background: var(--accent); color: var(--on-accent); box-shadow: 0 0 0 .15em var(--accent); }
+.map-tree .hl .c { color: var(--on-accent); }
 
 .todo {
   display: inline-flex; gap: .5em; align-items: baseline; width: fit-content; max-width: 100%;
@@ -641,23 +645,26 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
           <p class="repo">github.com/max-clouatre/factory-talk</p>
         </div>
         <div>
-<pre class="tree" aria-label="This talk's repository layout">factory-talk/
-├── AGENTS.md    <span class="c"># the rules</span>
+<pre class="tree map-tree" aria-label="This talk's repository layout, and how a change ships">factory-talk/
+<span data-hl="1 3">├── AGENTS.md    <span class="c"># rules + intake</span></span>
 ├── CLAUDE.md    <span class="c"># → AGENTS.md</span>
-├── .agents/skills/
-│   ├── brand-voice/
-│   ├── audience-simulation/
-│   └── self-assessment/ <span class="c"># eval</span>
-└── index.html   <span class="c"># the product</span></pre>
+<span data-hl="2">├── .agents/skills/</span>
+<span data-hl="2">│   ├── brand-voice/</span>
+<span data-hl="2 4">│   ├── audience-simulation/</span>
+<span data-hl="2 4">│   └── self-assessment/</span>
+└── index.html   <span class="c"># the product</span>
+
+<span data-hl="5">git push main → Pages <span class="c"># ship</span></span>
+<span data-hl="6">open the live slide   <span class="c"># validate</span></span></pre>
         </div>
       </div>
       <aside class="notes">
-        <li>15:00 to 15:45. Keep it quick; this is the war story. One line per press, point at the matching file in the tree.</li>
+        <li>15:00 to 15:45. Keep it quick; this is the war story. One line per press; the matching part of the tree lights up as each line lands.</li>
         <li><b>Rules:</b> written down once in AGENTS.md: my title is the same everywhere, nothing about my day job, an 18-point font minimum. Every session followed them without being told twice.</li>
         <li><b>Stations:</b> the skills hold the voice, the audience panel, and the self-assessment that runs the panel and hands back fixes.</li>
         <li><b>Intake:</b> every request, mine or the organizer's, went in as plain words and came out as one commit.</li>
         <li><b>Inspection:</b> a simulated audience panel was the eval. It ran twice, and its notes became the changes you just watched.</li>
-        <li><b>Ship:</b> several different AI sessions edited this deck. None of them deployed from a laptop: every change was a commit, live about a minute later.</li>
+        <li><b>Ship:</b> git push to main, and GitHub Pages serves it. Several different AI sessions edited this deck. None of them deployed from a laptop: every change was a commit, live about a minute later.</li>
         <li><b>Validation:</b> nothing counted as done until the change was opened on the live page and looked at.</li>
         <li>"Same factory, different product." Swap the deck for your codebase and it's the same shape.</li>
         <li>The repo is public, so you can read the whole factory.</li>
@@ -875,6 +882,9 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
   function paintSteps() {
     slides[idx].querySelectorAll("[data-step]").forEach(function (el) {
       el.classList.toggle("pending", parseInt(el.getAttribute("data-step"), 10) > step);
+    });
+    slides[idx].querySelectorAll("[data-hl]").forEach(function (el) {
+      el.classList.toggle("hl", el.getAttribute("data-hl").split(" ").indexOf(String(step)) >= 0);
     });
   }
 
