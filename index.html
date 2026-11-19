@@ -334,6 +334,24 @@ ol.takes.monday { max-width: 58ch; gap: .5em; }
 .callout { margin: 0; max-width: 46ch; border-left: 6px solid var(--accent); padding-left: .8em;
   font-size: 1.15em; line-height: 1.35; }
 .callout b { font-family: var(--f-mono); letter-spacing: .1em; text-transform: uppercase; margin-right: .5em; }
+/* slide 18: MANDATORY slams in as a stamp on the last press */
+.callout.slam { position: relative; }
+.callout.slam b { display: table; margin: 0 0 .35em; padding: .12em .5em; font-size: 1.9em; font-weight: 800; letter-spacing: .14em;
+  background: var(--accent); color: var(--on-accent); transform: rotate(-3deg); box-shadow: 6px 6px 0 var(--ink); }
+.callout.slam[data-step].pending { opacity: 0; }
+.callout.slam:not(.pending) { animation: slam-shake .5s .32s ease-out both; }
+.callout.slam:not(.pending) b { animation: slam-stamp .42s cubic-bezier(.2, 1.6, .4, 1) both; }
+@keyframes slam-stamp {
+  0%   { transform: scale(4) rotate(-14deg); opacity: 0; filter: blur(6px); }
+  55%  { transform: scale(.9) rotate(-1deg); opacity: 1; filter: none; }
+  100% { transform: scale(1) rotate(-3deg); opacity: 1; }
+}
+@keyframes slam-shake {
+  0%, 100% { transform: none; }
+  15% { transform: translate(-10px, 4px); } 30% { transform: translate(9px, -4px); }
+  45% { transform: translate(-6px, 2px); } 60% { transform: translate(4px, -1px); } 80% { transform: translate(-2px, 0); }
+}
+@media (prefers-reduced-motion: reduce) { .callout.slam:not(.pending), .callout.slam:not(.pending) b { animation: none; } }
 
 ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation-settings: normal; }
 
@@ -659,20 +677,20 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
     <!-- 18 · 16:15 -->
-    <section class="slide" data-name="Monday" data-cue="Chapter 17: Start Small" data-next="The line to close on">
+    <section class="slide" data-name="Monday" data-cue="Chapter 17: Start Small" data-next="The line to close on" data-steps="4">
       <h2>Monday, 9 AM: one meeting.</h2>
       <p class="lede blockers">Don't know which framework? Devs siloed? No agency over the SDLC? All solvable. Take it slow, and start here.</p>
       <ol class="takes plain monday">
-        <li>Everyone shows how they actually finished their last story.</li>
-        <li>Name where you overlap, and where you differ on purpose.</li>
-        <li>Agree on one or two simple things, and check them into the repo as a skill or rule.</li>
+        <li data-step="1">Everyone shows how they actually finished their last story.</li>
+        <li data-step="2">Name where you overlap, and where you differ on purpose.</li>
+        <li data-step="3">Agree on one or two simple things, and check them into the repo as a skill or rule.</li>
       </ol>
-      <p class="callout"><b>Mandatory</b>Not just the devs. Delivery and product are in the room too. The better aligned every area is, the better.</p>
+      <p class="callout slam" data-step="4"><b>Mandatory</b>Not just the devs. Delivery and product are in the room too. The better aligned every area is, the better.</p>
       <aside class="notes">
         <li>16:15 to 17:00.</li>
         <li>Open with the blockers: people don't try because they don't know which framework to use, devs are siloed or don't want to change how they work, or the team has no agency to rethink the SDLC. None of those is a technology problem, and every one is solvable.</li>
         <li>You don't need a platform team or a mandate. One or two small agreements, written down where the agent can read them.</li>
-        <li>Say this part firmly: this is not a dev-only meeting. Delivery and product have to be there. If only the devs align, the factory builds the wrong thing faster.</li>
+        <li>One item per press, then a fourth press slams in MANDATORY. Say this part firmly: this is not a dev-only meeting. Delivery and product have to be there. If only the devs align, the factory builds the wrong thing faster.</li>
         <li>If your team hasn't openly talked about how each of you uses AI, and the unique ways you're now finishing stories, put a meeting on the calendar first thing Monday.</li>
         <li>The goal isn't one tool. It's a shared understanding you build toward together.</li>
       </aside>
