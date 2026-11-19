@@ -299,7 +299,11 @@ ul.points.loud li strong { font-family: var(--f-display); font-weight: 800; font
 .statement.def { font-size: clamp(2.2rem, 5.6vw, 5.8rem); max-width: 18ch; line-height: 1.05; }
 
 /* slide 16: the proof */
-.proof-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
+.proof-split { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+ul.points.mapping { gap: .4em; max-width: 44ch; }
+ul.points.mapping li { line-height: 1.3; }
+ul.points.mapping b { font-weight: 700; }
+.same { margin: 0; font-family: var(--f-display); font-variation-settings: "wdth" 112; font-weight: 800; font-size: 1.35em; line-height: 1.1; }
 .repo { margin: 0; font-family: var(--f-mono); color: var(--muted); }
 
 /* slide 18: blockers folded into Monday */
@@ -621,16 +625,19 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
     <!-- 16 · 15:00 -->
-    <section class="slide" data-name="This talk was built in a factory" data-cue="Chapter 15: This Talk" data-next="What your skeptic will say">
+    <section class="slide" data-name="This talk was built in a factory" data-cue="Chapter 15: This Talk" data-next="What your skeptic will say" data-steps="7">
       <div class="split proof-split">
         <div>
-          <div class="eyebrow"><b>The proof</b></div>
           <h2>This talk was built in a factory.</h2>
-          <ul class="points">
-            <li>Written rules every change follows.</li>
-            <li>Different AI sessions, and every edit landed the same way: a commit, live in a minute.</li>
-            <li>The eval: a simulated audience panel. Its feedback became the changes.</li>
+          <ul class="points mapping">
+            <li data-step="1"><b>Rules:</b> AGENTS.md. Standards live in files, not heads.</li>
+            <li data-step="2"><b>Stations:</b> skills for voice, audience and self-assessment.</li>
+            <li data-step="3"><b>Intake:</b> every change request goes in the same way.</li>
+            <li data-step="4"><b>Inspection:</b> a simulated audience panel. Its findings became the edits.</li>
+            <li data-step="5"><b>Ship:</b> many sessions, one path, live a minute after the commit.</li>
+            <li data-step="6"><b>Validation:</b> every change checked on the live slide before it counts.</li>
           </ul>
+          <p class="same" data-step="7">Same factory, different product.</p>
           <p class="repo">github.com/max-clouatre/factory-talk</p>
         </div>
         <div>
@@ -645,11 +652,14 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
         </div>
       </div>
       <aside class="notes">
-        <li>15:00 to 15:45. Keep it quick; this is the war story.</li>
-        <li>The rules were written down once: my title is the same everywhere, nothing about my day job, an 18-point font minimum. Every session followed them without being told twice.</li>
-        <li>Several different AI sessions edited this deck. None of them deployed from a laptop: every change was a commit, and it was live about a minute later.</li>
-        <li>The organizer's feedback went in the same way, and so did a simulated audience panel I used as the eval. It ran twice, and its notes became the changes you just watched.</li>
-        <li>Point at the tree: AGENTS.md holds the purpose, the rules and how a change gets in. The skills hold the voice, the audience panel, and the self-assessment that runs the panel and hands back fixes.</li>
+        <li>15:00 to 15:45. Keep it quick; this is the war story. One line per press, point at the matching file in the tree.</li>
+        <li><b>Rules:</b> written down once in AGENTS.md: my title is the same everywhere, nothing about my day job, an 18-point font minimum. Every session followed them without being told twice.</li>
+        <li><b>Stations:</b> the skills hold the voice, the audience panel, and the self-assessment that runs the panel and hands back fixes.</li>
+        <li><b>Intake:</b> every request, mine or the organizer's, went in as plain words and came out as one commit.</li>
+        <li><b>Inspection:</b> a simulated audience panel was the eval. It ran twice, and its notes became the changes you just watched.</li>
+        <li><b>Ship:</b> several different AI sessions edited this deck. None of them deployed from a laptop: every change was a commit, live about a minute later.</li>
+        <li><b>Validation:</b> nothing counted as done until the change was opened on the live page and looked at.</li>
+        <li>"Same factory, different product." Swap the deck for your codebase and it's the same shape.</li>
         <li>The repo is public, so you can read the whole factory.</li>
         <li><b>"I wasn't the meat proxy for this talk. I built the factory."</b></li>
       </aside>
