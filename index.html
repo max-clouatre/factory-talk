@@ -13,6 +13,7 @@
   --muted: #59616A;
   --rule: #B8C0C6;
   --accent: #E39B12;
+  --cue: #8F5A00;
   --on-accent: #16191C;
   --p1: #3B6E8F;
   --p2: #A2513B;
@@ -26,13 +27,13 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #121518; --panel: #1A1E22; --ink: #E6E9EB; --muted: #97A1A9; --rule: #333A41;
-    --accent: #F0AE2E; --on-accent: #121518; --p1: #6FA3C4; --p2: #D3846B; --p3: #98B567;
+    --accent: #F0AE2E; --cue: #F0AE2E; --on-accent: #121518; --p1: #6FA3C4; --p2: #D3846B; --p3: #98B567;
     --todo-bg: #3A2D0E; --todo-fg: #F5D58A; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #121518; --panel: #1A1E22; --ink: #E6E9EB; --muted: #97A1A9; --rule: #333A41;
-  --accent: #F0AE2E; --on-accent: #121518; --p1: #6FA3C4; --p2: #D3846B; --p3: #98B567;
+  --accent: #F0AE2E; --cue: #F0AE2E; --on-accent: #121518; --p1: #6FA3C4; --p2: #D3846B; --p3: #98B567;
   --todo-bg: #3A2D0E; --todo-fg: #F5D58A; color-scheme: dark;
 }
 
@@ -145,6 +146,16 @@ body.clean .todo { display: none; }
 .bignum { font-family: var(--f-display); font-variation-settings: "wdth" 125; font-weight: 900; font-size: clamp(3rem, 10vw, 8rem); line-height: .9; font-variant-numeric: tabular-nums; }
 .bignum small { font-size: .3em; font-weight: 600; color: var(--muted); font-variation-settings: "wdth" 100; }
 
+/* memory cues: top-left talking point, next-slide bridge in the panel */
+.cue { position: absolute; top: clamp(12px, 2.4vh, 24px); left: max(16px, env(safe-area-inset-left, 0px), 6vw); z-index: 3; pointer-events: none;
+  font-family: var(--f-mono); font-size: .72em; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--cue);
+  display: flex; align-items: center; gap: .7em; }
+.cue::before { content: ""; width: 1.6em; height: 3px; background: var(--accent); flex: none; }
+.cue:empty { display: none; }
+.panel .next { font-size: 15px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 40ch; }
+.panel .next:empty { display: none; }
+.panel .next::before { content: "Next: "; color: var(--muted); }
+
 /* control panel */
 .panel {
   display: flex; align-items: center; gap: 1em; border-top: 1px solid var(--rule); background: var(--panel);
@@ -167,7 +178,7 @@ body.clean .todo { display: none; }
 .panel button:hover { border-color: var(--ink); }
 .panel button[aria-pressed="true"] { background: var(--ink); color: var(--panel); border-color: var(--ink); }
 button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-@media (max-width: 520px) { .panel .name, .panel .hide-sm { display: none; } .panel { justify-content: space-between; } }
+@media (max-width: 520px) { .panel .name, .panel .next, .panel .hide-sm { display: none; } .panel { justify-content: space-between; } }
 
 /* speaker notes drawer */
 .notes-drawer {
@@ -188,6 +199,7 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   body { font-size: max(18pt, 1.3vw); }
   .eyebrow, .byline, .compare h3, .triad figcaption, .term b, .tree,
   ol.takes li::before, .bignum small { font-size: 18pt; }
+  .cue { font-size: 18pt; }
   .notes-drawer { font-size: 18pt; }
   .notes-drawer h4 { font-size: 14pt; }
 }
@@ -198,7 +210,7 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   html, body { height: auto; overflow: visible; font-size: 18pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .deck { display: block; height: auto; }
   .stage { overflow: visible; }
-  .panel, .notes-drawer, .progress, .todo, .slide aside.notes { display: none !important; }
+  .panel, .notes-drawer, .progress, .todo, .cue, .slide aside.notes { display: none !important; }
   .slide { position: relative; inset: auto; width: 13.333in; height: 7.5in; overflow: hidden;
     opacity: 1 !important; visibility: visible !important; transform: none !important; transition: none !important;
     break-after: page; page-break-after: always; }
@@ -338,7 +350,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     <!-- ACT 1 · THE HOOK -->
 
     <!-- 1 · 0:00 -->
-    <section class="slide title-slide" data-name="Build the Factory, Not the Feature">
+    <section class="slide title-slide" data-name="Build the Factory, Not the Feature" data-cue="It&#x27;s a conversation" data-next="Who I am">
       <div class="hazard" aria-hidden="true"></div>
       <h1>Build the Factory, Not the Feature</h1>
       <div class="byline"><span><b>Max Clouatre</b> · Lead Engineer</span></div>
@@ -349,7 +361,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
     <!-- 2 · 0:30 -->
-    <section class="slide" data-name="About me">
+    <section class="slide" data-name="About me" data-cue="Clo-heart · I adapt fast" data-next="Hands up">
       <div class="eyebrow"><b>About me</b></div>
       <h1 class="statement">Max Clouatre</h1>
       <p class="say-it">pronounced "Clo-heart"</p>
@@ -366,7 +378,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
     <!-- 3 · 1:30 -->
-    <section class="slide" data-name="Show of hands" data-steps="3">
+    <section class="slide" data-name="Show of hands" data-cue="Pause for real after each" data-next="Words we&#x27;ve ruined" data-steps="3">
       <div class="eyebrow"><b>Show of hands</b></div>
       <div class="ask-list stairs">
         <p class="ask" data-step="1">Who uses AI on a team building or maintaining a product?</p>
@@ -384,7 +396,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     <!-- ACT 2 · THE MESS -->
 
     <!-- 4 · 3:00 -->
-    <section class="slide" data-name="Words that used to be fun">
+    <section class="slide" data-name="Words that used to be fun" data-cue="Let them groan first" data-next="What factory means tonight">
       <h2>Words that used to be fun</h2>
       <ul class="buzz">
         <li><s>agentic</s></li>
@@ -404,7 +416,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
     <!-- 5 · 3:30 -->
-    <section class="slide center" data-name="Factory, defined">
+    <section class="slide center" data-name="Factory, defined" data-cue="Read it once, slowly" data-next="The systems build themselves">
       <div class="eyebrow"><b>factory</b> · tonight's only definition</div>
       <h1 class="statement def">The shared system your team builds, that builds your product.</h1>
       <aside class="notes">
@@ -414,7 +426,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
     <!-- 6 · 3:45 -->
-    <section class="slide center" data-name="The systems can build themselves now">
+    <section class="slide center" data-name="The systems can build themselves now" data-cue="Don&#x27;t believe it · resist it · all different" data-next="How we used to build">
       <h1 class="statement">The systems can build themselves now.</h1>
       <aside class="notes">
         <li>3:45 to 4:45.</li>
@@ -426,7 +438,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
     <!-- 7 · 4:45 -->
-    <section class="slide" data-name="How we've built software" data-steps="5">
+    <section class="slide" data-name="How we've built software" data-cue="Simplified on purpose" data-next="Same picture, with AI" data-steps="5">
       <div class="split">
         <div>
           <div class="eyebrow"><b>How we've built software</b></div>
@@ -449,7 +461,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
     <!-- 8 · 5:30 -->
-    <section class="slide" data-name="Software engineering theatre" data-steps="7">
+    <section class="slide" data-name="Software engineering theatre" data-cue="One line per press · let them laugh" data-next="What that makes us" data-steps="7">
       <div class="split">
         <div>
           <div class="eyebrow"><b>Same picture, now with AI</b></div>
@@ -472,7 +484,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
     <!-- 9 · 7:00 -->
-    <section class="slide center" data-name="MEAT PROXY">
+    <section class="slide center" data-name="MEAT PROXY" data-cue="If it stings, good" data-next="We&#x27;ve solved this before">
       <h1 class="meat"><span>MEAT</span><span>PROXY</span></h1>
       <aside class="notes">
         <li>7:00 to 7:30.</li>
@@ -484,7 +496,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     <!-- ACT 3 · THE FIX -->
 
     <!-- 10 · 7:30 -->
-    <section class="slide" data-name="Nobody deploys from their laptop anymore">
+    <section class="slide" data-name="Nobody deploys from their laptop anymore" data-cue="We solved this once already" data-next="Where does your team sit?">
       <h2>Nobody deploys from their laptop anymore.</h2>
       <div class="compare">
         <div><h3>Deploy, 2010</h3><p>Everyone shipped their own way, and builds broke on the next machine.</p></div>
@@ -499,7 +511,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
     <!-- 11 · 8:45 -->
-    <section class="slide" data-name="Where does your team sit?" data-steps="3">
+    <section class="slide" data-name="Where does your team sit?" data-cue="Remember your hands?" data-next="What it looks like in a repo" data-steps="3">
       <div class="eyebrow"><b>Where does your team sit?</b></div>
       <div class="triad">
         <figure data-step="1"><div class="diagram" data-phase="current" role="img" aria-label="Three people, each with a differently shaped setup, adding misaligned layers to one product."></div><figcaption>Phase 1 · Current<span>Everyone brings their own</span><em>Each change carries the quirks of whoever made it. The product drifts.</em></figcaption></figure>
@@ -514,7 +526,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
     <!-- 12 · 10:15 -->
-    <section class="slide" data-name="The factory is files you can review">
+    <section class="slide" data-name="The factory is files you can review" data-cue="Standardize the repo, not the tool" data-next="The one line to remember">
       <div class="split">
         <div>
           <h2>The factory is files you can review.</h2>
@@ -542,7 +554,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
     <!-- 13 · 12:00 -->
-    <section class="slide" data-name="Edit the thing that edits the product">
+    <section class="slide" data-name="Edit the thing that edits the product" data-cue="Read it, then stop talking" data-next="The land nobody&#x27;s claimed">
       <h1 class="statement" style="max-width: 18ch;">Stop editing the product. Edit the thing that edits the product.</h1>
       <aside class="notes">
         <li>12:00 to 12:45. Read it, then stop talking. Let it sit; save objections for questions.</li>
@@ -555,7 +567,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     <!-- ACT 4 · THE CALL -->
 
     <!-- 14 · 12:45 -->
-    <section class="slide" data-name="So much land to grab">
+    <section class="slide" data-name="So much land to grab" data-cue="Past 13:30? Just the five words" data-next="The hard ones aren&#x27;t hard">
       <div class="eyebrow"><b>So much land to grab</b></div>
       <ul class="land">
         <li>Skills</li>
@@ -576,7 +588,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
     <!-- 15 · 14:00 -->
-    <section class="slide" data-name="A self-improving factory" data-steps="2">
+    <section class="slide" data-name="A self-improving factory" data-cue="Read the prompt out loud" data-next="Proof: this talk" data-steps="2">
       <div class="eyebrow"><b>Validation and self-improvement</b></div>
       <h2>Stop asking what the perfect tool is. Ask your product to examine itself.</h2>
       <blockquote class="prompt" data-step="1">"Pull up the last 100 PRs and pipelines. Identify common errors, failures, successes, bottlenecks, etc. and identify a list of core updates that would make the next 100 better."</blockquote>
@@ -591,7 +603,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
     <!-- 16 · 15:00 -->
-    <section class="slide" data-name="This talk was built in a factory">
+    <section class="slide" data-name="This talk was built in a factory" data-cue="The war story · keep it quick" data-next="What your skeptic will say">
       <div class="split proof-split">
         <div>
           <div class="eyebrow"><b>The proof</b></div>
@@ -626,7 +638,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
     <!-- 17 · 15:45 -->
-    <section class="slide" data-name="Not worth it because of..." data-steps="6">
+    <section class="slide" data-name="Not worth it because of..." data-cue="Quick presses · coffee&#x27;s on me" data-next="Monday, 9 AM" data-steps="6">
       <h2 class="long">That person on your team is going to say it's not worth it because of...</h2>
       <ul class="objections">
         <li data-step="1">Security.</li>
@@ -647,7 +659,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
     <!-- 18 · 16:15 -->
-    <section class="slide" data-name="Monday">
+    <section class="slide" data-name="Monday" data-cue="Delivery and product in the room" data-next="The line to close on">
       <h2>Monday, 9 AM: one meeting.</h2>
       <p class="lede blockers">Don't know which framework? Devs siloed? No agency over the SDLC? All solvable. Take it slow, and start here.</p>
       <ol class="takes plain monday">
@@ -667,7 +679,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
     <!-- 19 · 17:00 -->
-    <section class="slide" data-name="Build the factory first">
+    <section class="slide" data-name="Build the factory first" data-cue="One breath">
       <div class="hazard" aria-hidden="true"></div>
       <h1 style="font-size: clamp(2.2rem, 6vw, 5.4rem); max-width: 14ch;">Build the factory first. Then evolve the product.</h1>
       <div class="byline"><span><b>Max Clouatre</b> on LinkedIn</span></div>
@@ -678,6 +690,8 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
 
+    <div class="cue" id="cue" aria-hidden="true"></div>
+
     <div class="notes-drawer" id="notes" hidden>
       <h4>Speaker notes</h4>
       <ul id="notesList"></ul>
@@ -686,8 +700,9 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
 
   <nav class="panel wrap" aria-label="Slide controls">
     <div class="progress" id="progress"></div>
-    <span class="stn" id="stn">STN 01/20</span>
+    <span class="stn" id="stn">STN 01/19</span>
     <span class="name" id="name"></span>
+    <span class="next" id="nextCue" title="What the next slide is about"></span>
     <button class="timer idle" id="timer" title="Talk timer: T start/pause, R reset">20:00</button>
     <button id="notesBtn" aria-pressed="false" title="Toggle speaker notes (N)">Notes</button>
     <button id="prevBtn" aria-label="Previous">←</button>
@@ -848,6 +863,8 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     paintSteps();
     stn.textContent = "STN " + pad(idx + 1) + "/" + pad(N);
     nameEl.textContent = cur.getAttribute("data-name");
+    document.getElementById("cue").textContent = cur.getAttribute("data-cue") || "";
+    document.getElementById("nextCue").textContent = cur.getAttribute("data-next") || "";
     bar.style.width = ((idx + 1) / N * 100) + "%";
     if (booted && idx > 0 && !tStarted) tToggle();
     var src = cur.querySelector("aside.notes");
