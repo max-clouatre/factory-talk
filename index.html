@@ -538,13 +538,13 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
         </div>
         <div>
 <pre class="tree" aria-label="Example repository layout">repo/               <span class="c"># example setup</span>
-├── AGENTS.md          <span class="c"># shared instructions any tool reads</span>
+├── AGENTS.md       <span class="c"># read by any tool</span>
 ├── .agents/
-│   ├── skills/        <span class="c"># shared skills and commands</span>
-│   └── mcp.json       <span class="c"># shared tool config</span>
-├── evals/             <span class="c"># checks agent output must pass</span>
+│   ├── skills/     <span class="c"># shared skills</span>
+│   └── mcp.json    <span class="c"># shared tools</span>
+├── evals/          <span class="c"># output checks</span>
 └── .github/workflows/
-    └── factory.yml    <span class="c"># the same agent, run in CI</span></pre>
+    └── factory.yml <span class="c"># same agent in CI</span></pre>
         </div>
       </div>
       <aside class="notes">
