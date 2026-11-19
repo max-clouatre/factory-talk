@@ -11,7 +11,7 @@ Any agent working here reads this file first, then the skills it names.
 These hold for every change, from every session, without being restated.
 
 - **One buzzword.** "Factory" is the only one, and it means one thing: the shared system your team builds, that builds your product. Don't introduce "harness", "agentic" or friends on screen.
-- **Speaker title** is "Lead Engineer", everywhere.
+- **Speaker title** is "Applied AI Architect", everywhere.
 - **Public repo.** Nothing about the speaker's employer, its projects, people or numbers. Keep every example a general pattern.
 - **Time budget.** 20 minutes total. Each slide's notes carry its time window; questions start no later than 17:15. If a change adds time, take it from somewhere else in the same change.
 - **Legibility.** 18pt minimum for anything on a slide. Keep the print layout working.
