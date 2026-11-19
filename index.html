@@ -371,7 +371,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
       <div class="ask-list stairs">
         <p class="ask" data-step="1">Who uses AI on a team building or maintaining a product?</p>
         <p class="ask" data-step="2">Who has built shared skills, MCP servers and the like that others building the product can use?</p>
-        <p class="ask" data-step="3">Who has built the product so it builds the same way, regardless of who the person is?</p>
+        <p class="ask" data-step="3">Who has built their product so that it gets built in the same way, regardless of who is driving it?</p>
       </div>
       <aside class="notes">
         <li>1:30 to 3:00. One question per press.</li>
@@ -426,11 +426,22 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
     </section>
 
     <!-- 7 · 4:45 -->
-    <section class="slide" data-name="How we've built software">
-      <div class="eyebrow"><b>How we've built software</b></div>
-      <div class="board" data-board="classic" role="img" aria-label="Four developers, each with their own laptop, pulling cards from one shared board and all feeding one deployed system."></div>
+    <section class="slide" data-name="How we've built software" data-steps="5">
+      <div class="split">
+        <div>
+          <div class="eyebrow"><b>How we've built software</b></div>
+          <div class="board" data-board="classic" role="img" aria-label="Four developers, each with their own laptop, pulling cards from one shared board and all feeding one deployed system."></div>
+        </div>
+        <ul class="points loud">
+          <li data-step="1">Everyone on their own machine, with their own editor and setup.</li>
+          <li data-step="2">Stories come off one shared board.</li>
+          <li data-step="3">People write the code, and a teammate actually reads it.</li>
+          <li data-step="4">Every change merges into one deployed system.</li>
+          <li data-step="5">It worked, because our quirky setups stayed on our laptops.</li>
+        </ul>
+      </div>
       <aside class="notes">
-        <li>4:45 to 5:30.</li>
+        <li>4:45 to 5:30. One line per press, same as the next slide.</li>
         <li>This is simplified on purpose, everyone's reality is different, bear with me.</li>
         <li>Own machine, own setup, shared board, one system.</li>
         <li>It worked, because humans wrote the code and our quirky setups mostly stayed on our laptops.</li>
@@ -492,7 +503,7 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
       <div class="eyebrow"><b>Where does your team sit?</b></div>
       <div class="triad">
         <figure data-step="1"><div class="diagram" data-phase="current" role="img" aria-label="Three people, each with a differently shaped setup, adding misaligned layers to one product."></div><figcaption>Phase 1 · Current<span>Everyone brings their own</span><em>Each change carries the quirks of whoever made it. The product drifts.</em></figcaption></figure>
-        <figure data-step="2"><div class="diagram" data-phase="better" role="img" aria-label="Three matching setups built from shared parts. The product layers are closer but still slightly misaligned."></div><figcaption>Phase 2 · Better<span>Shared parts, own setup</span><em>Same skills and prompt libraries, assembled differently. Drift shrinks.</em></figcaption></figure>
+        <figure data-step="2"><div class="diagram" data-phase="better" role="img" aria-label="Three matching setups built from shared parts. The product layers are closer but still slightly misaligned."></div><figcaption>Phase 2 · Better<span>Shared parts, own setup</span><em>Same skills and MCP servers, assembled differently. Drift shrinks.</em></figcaption></figure>
         <figure data-step="3"><div class="diagram" data-phase="best" role="img" aria-label="Three people working through one shared factory. Every product layer is aligned."></div><figcaption>Phase 3 · Best<span>One shared factory</span><em>It ships with the project, so every change lands the way the product expects.</em></figcaption></figure>
       </div>
       <aside class="notes">
@@ -662,33 +673,10 @@ ol.takes.plain li { font-family: var(--f-body); font-weight: 500; font-variation
       <div class="byline"><span><b>Max Clouatre</b> on LinkedIn</span></div>
       <aside class="notes">
         <li>17:00 to 17:15. One breath.</li>
-        <li>The line, in one breath. Then flip to the hot takes.</li>
+        <li>The line, in one breath. Then thank them, and take questions if there's time.</li>
       </aside>
     </section>
 
-    <!-- QUESTIONS -->
-
-    <!-- 20 · 17:15 to 20:00 -->
-    <section class="slide" data-name="Hot takes">
-      <div class="eyebrow"><b>Hot takes</b></div>
-      <h2 class="long">Hot takes, mainly as conversation starters that might get me invited back.</h2>
-      <ol class="takes">
-        <li>Human code review is a waste of time.</li>
-        <li>Picking the model is the least important decision you'll make.</li>
-        <li>If the work stops when you close your laptop, you haven't built a factory.</li>
-        <li>The only engineering role left will be Product Engineer.</li>
-      </ol>
-      <aside class="notes">
-        <li>Questions, 17:15 to 20:00. Leave this up while you take them.</li>
-        <li><b>Laptop take:</b> the factory should keep building in CI and in the background while you sleep; if it only runs while you're watching, you're still the bottleneck.</li>
-        <li><b>Product Engineer take:</b> full stack, end to end tech, and product roadmapping in one role, because the factory writes the code and your job is deciding what it should build.</li>
-        <li><b>"We're on different tools. Do we standardize?"</b> No. Standardize what's in the repo, which most tools can read.</li>
-        <li><b>"For a small team, what's the first file?"</b> One shared instructions file, reviewed like code.</li>
-        <li><b>"Isn't one shared factory a bottleneck?"</b> Treat it like a product: it has an owner, takes pull requests, and evals are the safety net. Keep an escape hatch for experiments.</li>
-        <li><b>"Doesn't uniformity kill creativity?"</b> The factory sets the floor, not the ceiling.</li>
-        <li><b>"Who reviews, if not humans?"</b> Review the factory once, not every diff it produces.</li>
-      </aside>
-    </section>
 
     <div class="notes-drawer" id="notes" hidden>
       <h4>Speaker notes</h4>
